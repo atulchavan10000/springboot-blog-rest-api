@@ -24,10 +24,13 @@ public class PostController {
         return new ResponseEntity<>(postService.createPost(postDto), HttpStatus.CREATED);
     }
 
-    // get all posts rest api
+    // get all posts rest api, with pagination support
     @GetMapping()
-    public List<PostDto> getAllPosts(){
-        return postService.getAllPosts();
+    public List<PostDto> getAllPosts(
+            @RequestParam(value = "pageNo", defaultValue = "0", required = false) int pageNo,
+            @RequestParam(value = "pageSize", defaultValue = "10", required = false) int pageSize
+    ){
+        return postService.getAllPosts(pageNo, pageSize);
     }
 
 
