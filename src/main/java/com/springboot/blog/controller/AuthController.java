@@ -19,7 +19,6 @@ public class AuthController {
     }
 
     // Build login rest api,
-    // observe the @PostMapping below, this way we can provide multiple endpoint names to single operation
     @PostMapping(value = {"/login", "/signin"})
     public ResponseEntity<JwtAuthResponse> login(@RequestBody LoginDto loginDto){
         String token = authService.login(loginDto);
