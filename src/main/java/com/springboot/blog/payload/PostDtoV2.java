@@ -1,17 +1,17 @@
 package com.springboot.blog.payload;
 import io.swagger.v3.oas.annotations.media.Schema;
 import jakarta.validation.constraints.NotEmpty;
-import jakarta.validation.constraints.NotNull;
 import jakarta.validation.constraints.Size;
 import lombok.Data;
 
+import java.util.List;
 import java.util.Set;
 
 @Data
 @Schema(
         description = "PostDto Model Information"
 )
-public class PostDto {
+public class PostDtoV2 {
     private Long id;
 
     @Schema(
@@ -39,4 +39,5 @@ public class PostDto {
             description = "Blog Post Category"
     )
     private Long categoryId;
+    private List<String> tags;
 }
