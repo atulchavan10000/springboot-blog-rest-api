@@ -78,13 +78,13 @@ public class PostController {
             responseCode = "200",
             description = "HTTP Status 200 OK"
     )
-    @GetMapping(value = "/api/posts/{id}", produces = "application/vnd.projectdebug.v1+json")
+    @GetMapping("/api/v1/posts/{id}")
     public ResponseEntity<PostDto> getPostByIdV1(@PathVariable(name = "id") long id){
         return ResponseEntity.ok(postService.getPostById(id));
     }
 
     // this api demonstrates version through uri path
-    @GetMapping(value ="/api/posts/{id}",  produces = "application/vnd.projectdebug.v2+json")
+    @GetMapping("/api/v2/posts/{id}")
     public ResponseEntity<PostDtoV2> getPostByIdV2(@PathVariable(name = "id") long id){
         PostDto postDto = postService.getPostById(id);
         PostDtoV2 postDtoV2 = new PostDtoV2();
@@ -100,7 +100,6 @@ public class PostController {
 
         return ResponseEntity.ok(postDtoV2);
     }
-
 
 
     // update post by id
