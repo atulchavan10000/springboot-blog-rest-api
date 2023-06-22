@@ -146,4 +146,15 @@ public class PostController {
         List<PostDto> postDtos = postService.getPostsByCategory(categoryId);
         return ResponseEntity.ok(postDtos);
     }
+
+    @Operation(
+            summary = "Search Posts ",
+            description = "Search Posts by title or description"
+    )
+    @GetMapping("/api/v1/posts/search")
+    public ResponseEntity<List<PostDto>> searchPosts(@RequestParam(name ="query") String query){
+        List<PostDto> postDtos = postService.searchPosts(query);
+        return ResponseEntity.ok(postDtos);
+
+    }
 }
